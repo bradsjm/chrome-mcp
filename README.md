@@ -12,9 +12,8 @@ This container combines:
 ## Features
 
 - **x86_64 Architecture**: Built for amd64/x86_64 platforms (Chrome requirement)
-- **Web-based desktop**: Accessible through any browser
+- **Web-based desktop**: Accessible through any browser to see Chrome sessions
 - **Playwright MCP server**: Running on port 3002
-- **Non-headless Chrome**: For visual automation
 - **PDF and vision capabilities**: Built-in support
 - **Structured browser automation**: Without screenshots
 - **Output directory**: For saving results
