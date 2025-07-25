@@ -11,7 +11,7 @@ This container combines:
 
 ## Features
 
-- **Multi-Architecture Support**: Built for amd64 and arm64 platforms
+- **x86_64 Architecture**: Built for amd64/x86_64 platforms (Chrome requirement)
 - **Web-based desktop**: Accessible through any browser
 - **Playwright MCP server**: Running on port 3002
 - **Non-headless Chrome**: For visual automation
@@ -36,8 +36,9 @@ docker pull ghcr.io/bradsjm/chrome-mcp:latest
 docker run -d \
   --name chrome-mcp \
   -p 3000:3000 \
+  -p 3001:3001 \
   -p 3002:3002 \
-  -v $(pwd)/output:/config/output \
+  -v $(pwd)/config:/config \
   ghcr.io/bradsjm/chrome-mcp:latest
 ```
 
@@ -49,11 +50,14 @@ docker build -t chrome-mcp .
 
 ### Access the Desktop
 
-Open your browser and navigate to `http://localhost:3000` to access the web-based desktop.
+Open your browser and navigate to `http://localhost:3000` or `https://localhost:3001` to access the web-based desktop.
 
 ### MCP Server
 
-The Playwright MCP server is available at `http://localhost:3002` and automatically starts when the container launches.
+The Playwright MCP server is available at `http://localhost:3002` and automatically starts when the container launches. It supports both SSE and streaming HTTP protocols at:
+
+- SSE: `http://localhost:3002/sse`
+- Streaming HTTP: `http://localhost:3002/mcp`
 
 ## Configuration
 
@@ -68,7 +72,7 @@ The MCP server configuration is located at `/config/config.json`:
 
 1. Access the web desktop at `http://localhost:3000`
 2. Use the MCP server API at `http://localhost:3002` for automation
-3. Results and outputs are saved to the mounted output directory
+3. Outputs are saved to the mounted output directory
 
 ## Architecture
 
@@ -86,9 +90,9 @@ The container includes:
 
 ## Container Registry
 
-Pre-built multi-architecture images are available at:
+Pre-built container images are available at:
 - **Registry**: `ghcr.io/bradsjm/chrome-mcp`
-- **Supported Architectures**: linux/amd64, linux/arm64
+- **Supported Architecture**: linux/amd64 (x86_64 only - Chrome requirement)
 - **Tags**: `latest`, `main`, version tags
 
 ## License
