@@ -47,13 +47,18 @@ docker run -d \
 docker build -t chrome-mcp .
 ```
 
-### Access the Desktop
+## Usage
 
-Open your browser and navigate to `http://localhost:3000` or `https://localhost:3001` to access the web-based desktop.
+1. Access the web desktop at `http://localhost:3000` or `https://localhost:3001`
+2. Configure your MCP client to connect to the server (see above)
+3. Use browser automation through your preferred MCP client
+4. Outputs are saved to the mounted output directory
 
 ### MCP Server
 
-The Playwright MCP server is available at `http://localhost:3002` and automatically starts when the container launches. It supports both SSE and streaming HTTP protocols at:
+The Playwright MCP server is available at `http://localhost:3002` and automatically starts when the container launches. It supports both SSE and streaming HTTP protocols.
+
+For most MCP clients, add this configuration to connect to the containerized server:
 
 - SSE: `http://localhost:3002/sse`
 - Streaming HTTP: `http://localhost:3002/mcp`
@@ -66,22 +71,6 @@ The MCP server configuration is located at `/config/config.json`:
 - **Browser**: Chrome (non-headless)
 - **Capabilities**: PDF and vision support
 - **Output Directory**: `/config/output`
-
-## Using with MCP Clients
-
-The Playwright MCP server running in this container can be connected to various MCP-compatible clients for browser automation:
-
-For most MCP clients, add this configuration to connect to the containerized server:
-
-- **SSE Endpoint**: `http://localhost:3002/sse`
-- **HTTP Endpoint**: `http://localhost:3002/mcp`
-
-## Usage
-
-1. Access the web desktop at `http://localhost:3000`
-2. Configure your MCP client to connect to the server (see above)
-3. Use browser automation through your preferred MCP client
-4. Outputs are saved to the mounted output directory
 
 ## Architecture
 
