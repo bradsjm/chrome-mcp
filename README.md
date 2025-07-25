@@ -93,4 +93,4 @@ Pre-built multi-architecture images are available at:
 
 ## License
 
-This project is provided as-is for browser automation and testing purposes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
