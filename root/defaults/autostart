@@ -1,0 +1,2 @@
+xsetroot -solid blue
+npx -y @playwright/mcp --config /config/config.json

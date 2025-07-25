@@ -1,0 +1,20 @@
+{
+    "browser": {
+        "isolated": true,
+        "launchOptions": {
+            "headless": false
+        },
+        "contextOptions": {}
+    },
+    "server": {
+        "port": 3002,
+        "host": "0.0.0.0"
+    },
+    "capabilities": ["pdf", "vision"],
+    "outputDir": "/config/output",
+    "imageResponses": "allow",
+    "network": {
+        "allowedOrigins": [],
+        "blockedOrigins": []
+    }
+}

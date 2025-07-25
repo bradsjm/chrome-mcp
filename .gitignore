@@ -1,0 +1,23 @@
+# Output directory contents
+output/
+root/config/output/
+
+# Docker build cache
+.dockerignore
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
