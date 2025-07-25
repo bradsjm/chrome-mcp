@@ -72,49 +72,7 @@ The MCP server configuration is located at `/config/config.json`:
 
 The Playwright MCP server running in this container can be connected to various MCP-compatible clients for browser automation:
 
-### Supported Clients
-
-- **VS Code** with MCP extension
-- **Cursor** IDE
-- **Windsurf** IDE  
-- **Claude Desktop**
-- **Claude Code CLI**
-- **Gemini CLI**
-- **Goose**
-- **LM Studio**
-- **Qodo Gen**
-
-### Client Configuration
-
 For most MCP clients, add this configuration to connect to the containerized server:
-
-#### HTTP Transport (Recommended)
-```json
-{
-  "mcpServers": {
-    "playwright": {
-      "command": "node",
-      "args": ["-e", "require('@modelcontextprotocol/sdk/client/http').createHTTPClient('http://localhost:3002/mcp')"]
-    }
-  }
-}
-```
-
-#### SSE Transport
-```json
-{
-  "mcpServers": {
-    "playwright": {
-      "command": "node", 
-      "args": ["-e", "require('@modelcontextprotocol/sdk/client/sse').createSSEClient('http://localhost:3002/sse')"]
-    }
-  }
-}
-```
-
-### Direct API Usage
-
-You can also interact directly with the MCP server endpoints:
 
 - **SSE Endpoint**: `http://localhost:3002/sse`
 - **HTTP Endpoint**: `http://localhost:3002/mcp`
