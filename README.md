@@ -24,7 +24,7 @@ This container combines:
 
 ### Pull Pre-built Container (Recommended)
 
-The container is automatically built for multiple architectures (amd64, arm64) and published to GitHub Container Registry:
+The container is automatically built for x86_64 architecture and published to GitHub Container Registry:
 
 ```bash
 docker pull ghcr.io/bradsjm/chrome-mcp:latest
@@ -68,11 +68,63 @@ The MCP server configuration is located at `/config/config.json`:
 - **Capabilities**: PDF and vision support
 - **Output Directory**: `/config/output`
 
+## Using with MCP Clients
+
+The Playwright MCP server running in this container can be connected to various MCP-compatible clients for browser automation:
+
+### Supported Clients
+
+- **VS Code** with MCP extension
+- **Cursor** IDE
+- **Windsurf** IDE  
+- **Claude Desktop**
+- **Claude Code CLI**
+- **Gemini CLI**
+- **Goose**
+- **LM Studio**
+- **Qodo Gen**
+
+### Client Configuration
+
+For most MCP clients, add this configuration to connect to the containerized server:
+
+#### HTTP Transport (Recommended)
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "node",
+      "args": ["-e", "require('@modelcontextprotocol/sdk/client/http').createHTTPClient('http://localhost:3002/mcp')"]
+    }
+  }
+}
+```
+
+#### SSE Transport
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "node", 
+      "args": ["-e", "require('@modelcontextprotocol/sdk/client/sse').createSSEClient('http://localhost:3002/sse')"]
+    }
+  }
+}
+```
+
+### Direct API Usage
+
+You can also interact directly with the MCP server endpoints:
+
+- **SSE Endpoint**: `http://localhost:3002/sse`
+- **HTTP Endpoint**: `http://localhost:3002/mcp`
+
 ## Usage
 
 1. Access the web desktop at `http://localhost:3000`
-2. Use the MCP server API at `http://localhost:3002` for automation
-3. Outputs are saved to the mounted output directory
+2. Configure your MCP client to connect to the server (see above)
+3. Use browser automation through your preferred MCP client
+4. Outputs are saved to the mounted output directory
 
 ## Architecture
 
