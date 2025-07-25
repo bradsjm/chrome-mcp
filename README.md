@@ -11,19 +11,23 @@ This container combines:
 
 ## Features
 
-- Web-based desktop accessible through any browser
-- Playwright MCP server running on port 3002
-- Non-headless Chrome for visual automation
-- PDF and vision capabilities
-- Structured browser automation without screenshots
-- Output directory for saving results
+- **Multi-Architecture Support**: Built for amd64 and arm64 platforms
+- **Web-based desktop**: Accessible through any browser
+- **Playwright MCP server**: Running on port 3002
+- **Non-headless Chrome**: For visual automation
+- **PDF and vision capabilities**: Built-in support
+- **Structured browser automation**: Without screenshots
+- **Output directory**: For saving results
+- **Auto-built containers**: Available from GitHub Container Registry
 
 ## Quick Start
 
-### Build the Container
+### Pull Pre-built Container (Recommended)
+
+The container is automatically built for multiple architectures (amd64, arm64) and published to GitHub Container Registry:
 
 ```bash
-docker build -t chrome-mcp .
+docker pull ghcr.io/bradsjm/chrome-mcp:latest
 ```
 
 ### Run the Container
@@ -34,7 +38,13 @@ docker run -d \
   -p 3000:3000 \
   -p 3002:3002 \
   -v $(pwd)/output:/config/output \
-  chrome-mcp
+  ghcr.io/bradsjm/chrome-mcp:latest
+```
+
+### Build Locally (Optional)
+
+```bash
+docker build -t chrome-mcp .
 ```
 
 ### Access the Desktop
@@ -73,6 +83,13 @@ The container includes:
 - Chrome browser in the desktop menu
 - Playwright browsers installed with dependencies
 - MCP server auto-start configuration
+
+## Container Registry
+
+Pre-built multi-architecture images are available at:
+- **Registry**: `ghcr.io/bradsjm/chrome-mcp`
+- **Supported Architectures**: linux/amd64, linux/arm64
+- **Tags**: `latest`, `main`, version tags
 
 ## License
 
